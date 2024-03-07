@@ -83,13 +83,13 @@ func pruneTMData(home string) error {
 		return err
 	}
 
-	// fmt.Println("compacting block store")
-	// if err := blockStoreDB.ForceCompact(nil, nil); err != nil {
-	// 	return err
-	// }
+	fmt.Println("compacting block store")
+	if err := blockStoreDB.Compact(nil, nil); err != nil {
+		return err
+	}
 
-	//		return nil
-	//})
+	//return nil
+	// } )
 
 	fmt.Println("pruning state store")
 	// prune state store
@@ -99,9 +99,9 @@ func pruneTMData(home string) error {
 	}
 
 	fmt.Println("compacting state store")
-	// if err := stateDB.ForceCompact(nil, nil); err != nil {
-	// 	return err
-	// }
+	if err := stateDB.Compact(nil, nil); err != nil {
+		return err
+	}
 
 	return nil
 }

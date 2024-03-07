@@ -15,7 +15,6 @@ var (
 	cosmosSdk  bool
 	tendermint bool
 	blocks     uint64
-	versions   uint64
 	appName    = "cosmprund"
 )
 
@@ -42,27 +41,9 @@ func NewRootCmd() *cobra.Command {
 		panic(err)
 	}
 
-	// --versions flag
-	rootCmd.PersistentFlags().Uint64VarP(&versions, "versions", "v", 10, "set the amount of versions to keep in the application store (default=10)")
-	if err := viper.BindPFlag("versions", rootCmd.PersistentFlags().Lookup("versions")); err != nil {
-		panic(err)
-	}
-
 	// --backend flag
 	rootCmd.PersistentFlags().StringVar(&backend, "backend", "goleveldb", "set the type of db being used(default=goleveldb)") //todo add list of dbs to comment
 	if err := viper.BindPFlag("backend", rootCmd.PersistentFlags().Lookup("backend")); err != nil {
-		panic(err)
-	}
-
-	// --app flag
-	rootCmd.PersistentFlags().StringVar(&app, "app", "", "set the app you are pruning (supported apps: osmosis)")
-	if err := viper.BindPFlag("app", rootCmd.PersistentFlags().Lookup("app")); err != nil {
-		panic(err)
-	}
-
-	// --cosmos-sdk flag
-	rootCmd.PersistentFlags().BoolVar(&cosmosSdk, "cosmos-sdk", true, "set to false if using only with tendermint (default true)")
-	if err := viper.BindPFlag("cosmos-sdk", rootCmd.PersistentFlags().Lookup("cosmos-sdk")); err != nil {
 		panic(err)
 	}
 
