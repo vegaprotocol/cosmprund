@@ -1,3 +1,3 @@
-# Copied from "github.com/cosmos/cosmos-sdk/store/rootmulti
+# Copied from "cosmossdk.io/store/rootmulti
 
 Update accordingly or remove
